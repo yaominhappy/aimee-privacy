@@ -32,7 +32,7 @@
 
     header {
       text-align: center;
-      margin-bottom: 32px;
+      margin-bottom: 24px;
     }
 
     header h1 {
@@ -44,6 +44,26 @@
     header p {
       color: var(--muted);
       font-size: 0.95rem;
+    }
+
+    .lang-switch {
+      text-align: right;
+      margin-bottom: 16px;
+    }
+
+    .lang-switch button {
+      background: none;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-left: 6px;
+    }
+
+    .lang-switch button.active {
+      background: var(--primary);
+      color: white;
     }
 
     .card {
@@ -73,15 +93,6 @@
       margin: 6px 0;
     }
 
-    .note {
-      background: #f5f7ff;
-      border-left: 4px solid var(--primary);
-      padding: 12px 16px;
-      margin: 16px 0;
-      border-radius: 6px;
-      font-size: 0.95rem;
-    }
-
     footer {
       margin-top: 48px;
       text-align: center;
@@ -89,15 +100,22 @@
       color: var(--muted);
     }
 
-    a {
-      color: var(--primary);
-      text-decoration: none;
-    }
+    .lang-en { display: block; }
+    .lang-zh { display: none; }
 
-    a:hover {
-      text-decoration: underline;
-    }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
   </style>
+
+  <script>
+    function switchLang(lang) {
+      document.querySelector('.lang-en').style.display = lang === 'en' ? 'block' : 'none';
+      document.querySelector('.lang-zh').style.display = lang === 'zh' ? 'block' : 'none';
+
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+    }
+  </script>
 </head>
 
 <body>
@@ -107,112 +125,276 @@
       <p>Last updated: January 2026</p>
     </header>
 
+    <div class="lang-switch">
+      <button id="btn-en" class="active" onclick="switchLang('en')">English</button>
+      <button id="btn-zh" onclick="switchLang('zh')">中文</button>
+    </div>
+
     <div class="card">
-      <p>
-        Welcome to <strong>AIMee</strong> ("we", "our", or "us").
-        Your privacy is important to us. This Privacy Policy explains
-        how we collect, use, store, and protect your information when you
-        use the AIMee mobile application ("App").
-      </p>
 
-      <h2>1. Information We Collect</h2>
+      <!-- ================= ENGLISH VERSION ================= -->
+      <div class="lang-en">
 
-      <h3>1.1 Personal Information</h3>
-      <ul>
-        <li>Email address or phone number (for account registration)</li>
-        <li>User profile information (nickname, preferences)</li>
-        <li>Chat content between you and your AI agents</li>
-      </ul>
+        <p>
+          AIMee ("we", "our", or "us") respects your privacy.
+          This Privacy Policy explains how we collect, use, store,
+          process, and share your information when you use the AIMee mobile application ("App").
+        </p>
 
-      <h3>1.2 Audio & Voice Data (Microphone)</h3>
-      <p>
-        If you enable voice chat or voice messages, the App may access
-        your microphone to record voice input.
-      </p>
+        <h2>1. Information We Collect</h2>
 
-      <div class="note">
-        • Voice data is used only to provide voice messaging and AI responses.<br />
-        • Audio data is processed securely and is not used for advertising.<br />
-        • We do not share your voice recordings with other users.
+        <h3>1.1 Account Information</h3>
+        <ul>
+          <li>Email address or phone number</li>
+          <li>User ID</li>
+        </ul>
+
+        <h3>1.2 Profile Information</h3>
+        <ul>
+          <li>Nickname</li>
+          <li>First name / Last name (if provided)</li>
+          <li>Gender (if provided)</li>
+          <li>Age or year of birth (if provided)</li>
+          <li>Location information (if provided)</li>
+        </ul>
+
+        <h3>1.3 Chat & AI Interaction Data</h3>
+        <ul>
+          <li>Text messages between you and AI companions</li>
+          <li>Voice messages (if you use voice features)</li>
+          <li>AI-generated responses</li>
+        </ul>
+
+        <h2>2. AI Processing & Third-Party LLM Providers</h2>
+
+        <p>
+          To provide AI chat and companion functionality, AIMee transmits certain user data
+          to third-party Large Language Model (LLM) providers for processing.
+        </p>
+
+        <p>
+          These providers may include:
+        </p>
+
+        <ul>
+          <li><strong>OpenAI</strong></li>
+          <li><strong>Google Gemini</strong></li>
+          <li><strong>DeepSeek</strong></li>
+        </ul>
+
+        <p>
+          The following data may be transmitted for AI response generation:
+        </p>
+
+        <ul>
+          <li>Chat messages you send</li>
+          <li>Nickname</li>
+          <li>First and last name (if provided)</li>
+          <li>Gender (if provided)</li>
+          <li>Age or year of birth (if provided)</li>
+          <li>Location (if provided)</li>
+        </ul>
+
+        <p>
+          This data is used solely for:
+        </p>
+
+        <ul>
+          <li>Generating AI responses</li>
+          <li>Maintaining conversational continuity</li>
+          <li>Safety and abuse prevention</li>
+        </ul>
+
+        <p>
+          We require these providers to use data only to provide AI processing services
+          to AIMee and to maintain appropriate security safeguards.
+        </p>
+
+        <h2>3. User Consent</h2>
+
+        <p>
+          AIMee will request your explicit consent before transmitting personal data
+          to AI service providers. You may withdraw your consent at any time
+          in the App settings. If consent is withdrawn, AI chat functionality
+          may become unavailable.
+        </p>
+
+        <h2>4. Data Sharing</h2>
+
+        <p>
+          We do not sell your personal data.
+        </p>
+
+        <p>
+          We share data only with:
+        </p>
+
+        <ul>
+          <li>AI processing providers listed above</li>
+          <li>Cloud hosting providers</li>
+          <li>Security and compliance services</li>
+        </ul>
+
+        <h2>5. Data Retention</h2>
+
+        <ul>
+          <li>Chat data is retained only as long as necessary to provide services</li>
+          <li>You may request deletion of your account and data</li>
+          <li>Anonymized data may be retained for system improvement</li>
+        </ul>
+
+        <h2>6. Data Security</h2>
+
+        <p>
+          We use encryption (HTTPS/TLS), access controls, and monitoring
+          to protect your data.
+        </p>
+
+        <h2>7. International Data Transfers</h2>
+
+        <p>
+          AI providers may process data in different countries.
+          By using AIMee, you acknowledge that your data may be transferred
+          internationally in accordance with applicable laws.
+        </p>
+
+        <h2>8. Your Rights</h2>
+
+        <ul>
+          <li>Access your data</li>
+          <li>Correct inaccurate data</li>
+          <li>Withdraw consent</li>
+          <li>Request deletion</li>
+        </ul>
+
+        <h2>9. Contact</h2>
+
+        <p>
+          Email: <a href="mailto:privacy@aimeelab.com">privacy@aimeelab.com</a><br />
+          Website: <a href="https://aimeelab.com">https://aimeelab.com</a>
+        </p>
+
       </div>
 
-      <h3>1.3 Camera Access</h3>
-      <p>
-        If you choose to use camera-related features (such as avatar customization
-        or video interactions), the App may access your camera only when you
-        explicitly initiate those features.
-      </p>
+      <!-- ================= CHINESE VERSION ================= -->
+      <div class="lang-zh">
 
-      <h3>1.4 Storage Access</h3>
-      <p>
-        The App may access device storage to temporarily save audio files,
-        images, or cached AI-generated content required for core functionality.
-      </p>
+        <p>
+          AIMee（“我们”）高度重视您的隐私。本隐私政策说明您在使用
+          AIMee 移动应用程序时，我们如何收集、使用、存储、处理及共享您的信息。
+        </p>
 
-      <h3>1.5 Device & Network Information</h3>
-      <ul>
-        <li>Network connection status</li>
-        <li>App performance and crash diagnostics</li>
-      </ul>
+        <h2>1. 我们收集的信息</h2>
 
-      <h2>2. How We Use Your Information</h2>
-      <ul>
-        <li>Provide AI chat, voice messaging, and companion features</li>
-        <li>Improve app stability, performance, and user experience</li>
-        <li>Ensure security and prevent misuse</li>
-        <li>Comply with legal and regulatory requirements</li>
-      </ul>
+        <h3>1.1 账户信息</h3>
+        <ul>
+          <li>邮箱或手机号</li>
+          <li>用户 ID</li>
+        </ul>
 
-      <p><strong>We do not sell your personal data.</strong></p>
+        <h3>1.2 个人资料信息</h3>
+        <ul>
+          <li>昵称</li>
+          <li>姓名（如填写）</li>
+          <li>性别（如填写）</li>
+          <li>年龄或出生年份（如填写）</li>
+          <li>位置信息（如填写）</li>
+        </ul>
 
-      <h2>3. Data Sharing & Third-Party Services</h2>
-      <p>
-        We may use trusted third-party services for cloud hosting, AI processing,
-        and voice recognition. These providers are contractually required to
-        protect your data and use it only for providing services to AIMee.
-      </p>
+        <h3>1.3 聊天与 AI 互动数据</h3>
+        <ul>
+          <li>您与 AI 的聊天内容</li>
+          <li>语音消息（如使用语音功能）</li>
+          <li>AI 生成的回复</li>
+        </ul>
 
-      <h2>4. Data Retention</h2>
-      <ul>
-        <li>Voice and chat data is retained only as long as necessary</li>
-        <li>You may request deletion of your data at any time</li>
-        <li>Anonymized data may be retained for system improvement</li>
-      </ul>
+        <h2>2. AI 处理与第三方 LLM 服务商</h2>
 
-      <h2>5. Data Security</h2>
-      <p>
-        We use industry-standard security measures including encrypted
-        transmission (HTTPS/TLS), access controls, and monitoring.
-      </p>
+        <p>
+          为提供 AI 聊天功能，我们会将部分数据发送至第三方大语言模型（LLM）服务商进行处理。
+        </p>
 
-      <h2>6. Your Choices</h2>
-      <ul>
-        <li>Disable microphone or camera permissions via device settings</li>
-        <li>Delete chat history where supported</li>
-        <li>Request account and data deletion</li>
-      </ul>
+        <p>包括但不限于：</p>
 
-      <h2>7. Children's Privacy</h2>
-      <p>
-        AIMee is not intended for children under the age of 13.
-        We do not knowingly collect personal data from children.
-      </p>
+        <ul>
+          <li><strong>OpenAI</strong></li>
+          <li><strong>Google Gemini</strong></li>
+          <li><strong>DeepSeek</strong></li>
+        </ul>
 
-      <h2>8. Changes to This Policy</h2>
-      <p>
-        We may update this Privacy Policy from time to time.
-        Updates will be posted on this page with a revised date.
-      </p>
+        <p>可能发送的数据包括：</p>
 
-      <h2>9. Contact Us</h2>
-      <p>
-        If you have any questions or requests regarding this Privacy Policy,
-        please contact us:
-      </p>
-      <p>
-        📧 <strong>Email:</strong> <a href="mailto:privacy@aimeelab.com">privacy@aimeelab.com</a><br />
-        🌐 <strong>Website:</strong> <a href="https://aimeelab.com">https://aimeelab.com</a>
-      </p>
+        <ul>
+          <li>聊天内容</li>
+          <li>昵称</li>
+          <li>姓名（如填写）</li>
+          <li>性别（如填写）</li>
+          <li>年龄或出生年份（如填写）</li>
+          <li>位置信息（如填写）</li>
+        </ul>
+
+        <p>
+          这些数据仅用于生成 AI 回复、维持对话连续性以及安全控制。
+        </p>
+
+        <h2>3. 用户授权</h2>
+
+        <p>
+          在向 AI 服务商发送个人数据前，我们会在应用内请求您的明确授权。
+          您可以随时在设置页面撤回授权。撤回后，AI 聊天功能可能无法使用。
+        </p>
+
+        <h2>4. 数据共享</h2>
+
+        <p>我们不会出售您的个人数据。</p>
+
+        <p>数据仅会共享给：</p>
+
+        <ul>
+          <li>上述 AI 服务商</li>
+          <li>云服务提供商</li>
+          <li>安全与合规服务提供商</li>
+        </ul>
+
+        <h2>5. 数据保留</h2>
+
+        <ul>
+          <li>聊天数据仅在必要时间内保留</li>
+          <li>您可随时请求删除账户与数据</li>
+          <li>匿名化数据可能用于系统优化</li>
+        </ul>
+
+        <h2>6. 数据安全</h2>
+
+        <p>
+          我们采用 HTTPS/TLS 加密、访问控制与监控机制保护数据安全。
+        </p>
+
+        <h2>7. 跨境数据传输</h2>
+
+        <p>
+          AI 服务商可能在不同国家处理数据。
+          您理解并同意您的数据可能根据适用法律进行跨境传输。
+        </p>
+
+        <h2>8. 您的权利</h2>
+
+        <ul>
+          <li>访问数据</li>
+          <li>更正数据</li>
+          <li>撤回授权</li>
+          <li>请求删除数据</li>
+        </ul>
+
+        <h2>9. 联系我们</h2>
+
+        <p>
+          邮箱：<a href="mailto:privacy@aimeelab.com">privacy@aimeelab.com</a><br />
+          网站：<a href="https://aimeelab.com">https://aimeelab.com</a>
+        </p>
+
+      </div>
+
     </div>
 
     <footer>
